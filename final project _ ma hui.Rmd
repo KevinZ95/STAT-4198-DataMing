@@ -1,0 +1,813 @@
+---
+title: "Final Project"
+output: html_notebook
+---
+1.
+```{r}
+data <- read.csv(file = "D:/file/STAT4198 Final/fordTrain.csv",
+stringsAsFactors=TRUE)
+
+indexes <- read.csv(file = "D:/file/STAT4198 Final/indexes.csv",
+header=FALSE,
+stringsAsFactors=TRUE)
+
+last.two.digits<- 00
+k<-last.two.digits+1
+```
+```{r}
+newdata<-data.frame(data[data[,1]%in%indexes[k,], ])
+summary(newdata)
+```
+2.
+```{r}
+newdata <- newdata[ , -c(11, 29, 31)]
+```
+```{R}
+newdata
+```
+3.
+```{r}
+P1 <- newdata$P1
+hist(P1)
+barplot(table(P1))
+```
+
+
+```{r}
+P2 <- newdata$P2
+hist(P2)
+barplot(table(P2))
+```
+P2 bar plots has too many levels to be categrical. therefor, the varibale continues 
+```{r}
+P3 <- newdata$P3
+hist(P3)
+barplot(table(P3))
+```
+continous 
+```{r}
+P4 <- newdata$P4
+hist(P4)
+barplot(table(P4))
+```
+
+```{r}
+P5 <- newdata$P5
+hist(P5)
+barplot(table(P5))
+```
+
+```{r}
+P6 <- newdata$P6
+hist(P6)
+barplot(table(P6))
+```
+
+```{r}
+P7 <- newdata$P7
+hist(P7)
+barplot(table(P7))
+```
+
+```{r}
+E1 <- newdata$E1
+hist(E1)
+barplot(table(E1))
+```
+
+```{r}
+E2 <- newdata$E2
+hist(E2)
+barplot(table(E2))
+```
+
+
+```{r}
+E3 <- newdata$E3
+hist(E3)
+barplot(table(E3))
+```
+
+
+```{r}
+E4 <- newdata$E4
+hist(E4)
+barplot(table(E4))
+```
+
+
+```{r}
+E5 <- newdata$E5
+hist(E5)
+barplot(table(E5))
+```
+
+```{r}
+E6 <- newdata$E6
+hist(E6)
+barplot(table(E6))
+```
+```{r}
+E7 <- newdata$E7
+hist(E7)
+barplot(table(E7))
+```
+continue 
+```{r}
+E8 <- newdata$E8
+hist(E8)
+barplot(table(E8))
+```
+E8 bar level is comparatively clear, which has 10 levels from 0 to 9. the varibale E8 is categriocal. 
+
+```{r}
+E9 <- newdata$E9
+hist(E9)
+barplot(table(E9))
+```
+categriocal: two levels: 0 and 1.
+
+
+```{r}
+E10 <- newdata$E10
+hist(E10)
+barplot(table(E10))
+```
+continous
+```{r}
+E11 <- newdata$E11
+hist(E11)
+barplot(table(E11))
+```
+continue
+```{r}
+V1 <- newdata$V1
+hist(V1)
+barplot(table(V1))
+```
+```{r}
+V2 <- newdata$V2
+hist(V2)
+barplot(table(V2))
+```
+```{r}
+V3 <- newdata$V3
+hist(V3)
+barplot(table(V3))
+```
+
+```{r}
+V4 <- newdata$V4
+hist(V4)
+barplot(table(V4))
+```
+
+```{r}
+V5 <- newdata$V5
+hist(V5)
+barplot(table(V5))
+```
+
+```{r}
+V6 <- newdata$V6
+hist(V6)
+barplot(table(V6))
+```
+
+```{r}
+V8 <- newdata$V8
+hist(V8)
+barplot(table(V8))
+```
+
+```{r}
+V10 <- newdata$V10
+hist(V10)
+barplot(table(V10))
+```
+
+```{r}
+V11 <- newdata$V11
+hist(V11)
+barplot(table(V11))
+```
+3. Investigate(Graphically) 
+```{r}
+library(ggplot2)
+p1<-ggplot(data,aes(x=P1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+```{r}
+p1<-ggplot(data,aes(x=P2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2) 
+```
+
+```{r}
+p1<-ggplot(data,aes(x=P3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=P4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=P5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+P5 has no relationship with response variable
+
+
+
+```{r}
+p1<-ggplot(data,aes(x=P6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=700)+theme_bw()
+p2<-ggplot(data,aes(x=P6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=700)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=P7,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=P7,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+E3 is categorial, so we cannot decided if E3 has relationsip with response variable by histgram
+
+
+
+```{r}
+p1<-ggplot(data,aes(x=E4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+E5 has no relationship with response variable
+
+
+```{r}
+p1<-ggplot(data,aes(x=E6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E7,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E7,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+E7 
+
+
+```{r}
+p1<-ggplot(data,aes(x=E8,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E8,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+E8 
+
+
+
+```{r}
+p1<-ggplot(data,aes(x=E9,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E9,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+E9 
+
+
+```{r}
+p1<-ggplot(data,aes(x=E10,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E10,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=E11,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=E11,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+```{r}
+p1<-ggplot(data,aes(x=V1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V1,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+
+```{r}
+p1<-ggplot(data,aes(x=V2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V2,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+V2 has no relationship with response variable
+
+
+```{r}
+p1<-ggplot(data,aes(x=V3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V3,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+
+```{r}
+p1<-ggplot(data,aes(x=V4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V4,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+
+```{r}
+p1<-ggplot(data,aes(x=V5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V5,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+V5
+
+```{r}
+p1<-ggplot(data,aes(x=V6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V6,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+
+
+```{r}
+p1<-ggplot(data,aes(x=V8,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V8,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+it doesn't effect the response. 
+
+```{r}
+p1<-ggplot(data,aes(x=V10,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V10,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+V10 
+
+```{r}
+p1<-ggplot(data,aes(x=V11,group=IsAlert,fill=IsAlert))+  geom_histogram(position="dodge",binwidth=70)+theme_bw()
+p2<-ggplot(data,aes(x=V11,group=IsAlert,fill=IsAlert))+  geom_histogram(position="fill",binwidth=70)+theme_bw()
+library(gridExtra)
+grid.arrange(p1, p2, ncol=2)
+```
+#p
+```{r}
+pairs(newdata[,c(2,3,4,5,6,7,8,9,10)])
+```
+P3 and P4 has relationship.
+# E
+```{r}
+pairs(newdata[,c(2,3,11,12,13,14,15,16,17,18,19,20,21)])
+```
+no linear relationship 
+
+#v
+```{r}
+pairs(newdata[,c(2,3,22,23,24,25,26,27,28,29,30)])
+```
+
+
+5. Dimension reduction
+Remove the features which have no relationship with the response
+deleting 
+P5, E5, V2,  V8, 
+```{r}
+newdata <- newdata[, - c(8, 15, 23,  28)]
+```
+
+Remove a feature(s) that has a perfect relationship to another one
+deleting 
+P3
+```{r}
+newdata <- newdata[, - 6]
+```
+
+
+
+
+
+*Basic Model building
+neural network
+```{r}
+#dummy variable
+newdata$IsAlert<-ifelse(newdata$IsAlert=='0',0,1)
+
+id<-newdata$IsAlert
+newdata$IsAlert<-NULL
+str(newdata)
+```
+
+
+
+```{r}
+
+
+newdata$E3 <- as.factor(newdata$E3)
+newdata$E7 <- as.factor(newdata$E7)
+newdata$E8 <- as.factor(newdata$E8)
+newdata$E9 <- as.factor(newdata$E9)
+newdata$V5 <- as.factor(newdata$V5)
+newdata$V10 <- as.factor(newdata$V10)
+library(caret)
+#Converting every categorical variable to numerical using dummy variables
+dmy <- dummyVars(" ~ .", data = newdata,fullRank = T)
+train_transformed <- data.frame(predict(dmy, newdata = newdata))
+summary(train_transformed)
+```
+
+
+
+```{r}
+#Minimax transform the continuous variables
+train_transformed$P1 <- (newdata$P1 - min(newdata$P1)) / (max(newdata$P1) - min(newdata$P1))
+train_transformed$P2 <- (newdata$P2 - min(newdata$P2)) / (max(newdata$P2) - min(newdata$P2))
+train_transformed$P4 <- (newdata$P4 - min(newdata$P4)) / (max(newdata$P4) - min(newdata$P4))
+train_transformed$P6 <- (newdata$P6 - min(newdata$P6)) / (max(newdata$P6) - min(newdata$P6))
+train_transformed$P7 <- (newdata$P7 - min(newdata$P7)) / (max(newdata$P7) - min(newdata$P7))
+
+train_transformed$E1 <- (newdata$E1 - min(newdata$E1)) / (max(newdata$E1) - min(newdata$E1))
+train_transformed$E2 <- (newdata$E2 - min(newdata$E2)) / (max(newdata$E2) - min(newdata$E2))
+train_transformed$E4 <- (newdata$E4 - min(newdata$E4)) / (max(newdata$E4) - min(newdata$E4))
+train_transformed$E6 <- (newdata$E6 - min(newdata$E6)) / (max(newdata$E6) - min(newdata$E6))
+train_transformed$E10 <- (newdata$E10 - min(newdata$E10)) / (max(newdata$E10) - min(newdata$E10))
+train_transformed$E11 <- (newdata$E11 - min(newdata$E11)) / (max(newdata$E11) - min(newdata$E11))
+
+train_transformed$V1<- (newdata$V1 - min(newdata$V1)) / (max(newdata$V1) - min(newdata$V1))
+train_transformed$V3 <- (newdata$V3 - min(newdata$V3)) / (max(newdata$V3) - min(newdata$V3))
+train_transformed$V4 <- (newdata$V4 - min(newdata$V4)) / (max(newdata$V4) - min(newdata$V4))
+train_transformed$V6 <- (newdata$V6 - min(newdata$V6)) / (max(newdata$V6) - min(newdata$V6))
+train_transformed$V11 <- (newdata$V11 - min(newdata$V11)) / (max(newdata$V11) - min(newdata$V11))
+train_transformed$IsAlert <- id
+```
+```{r}
+
+#Spliting training set into two parts based on outcome: 75% and 25%
+
+newdata_train <- train_transformed[1:750, ]
+newdata_test <- train_transformed[751:1000, ]
+```
+
+```{r}
+library(nnet)
+```
+
+```{r}
+set.seed(5)
+model1 <- nnet(IsAlert~., data = newdata_train, size = 3, decay = 0, maxit = 100)
+table(round(model1$fitted.values, 1))
+estimated_isAlert=as.numeric(model1$fitted.values>0.5)
+
+T = table(estimated_isAlert,newdata_train$IsAlert)
+misscls.train<-sum((estimated_isAlert - newdata_train$IsAlert)^2)/length(newdata_train$IsAlert)
+misscls.train
+presdicted.testing<-as.numeric(predict(model1,newdata_test )>0.5)
+Ttest = table(presdicted.testing, newdata_test$IsAlert)
+misscls.test<-sum((presdicted.testing - newdata_test$IsAlert)^2)/length(newdata_test$IsAlert)
+misscls.test
+```
+
+
+```{r}
+set.seed(6)
+model2 <- nnet(IsAlert~., data = newdata_train, size = 10, decay =0, maxit = 100)
+#table(round(model2$fitted.values, 1))
+
+estimated_isAlert=as.numeric(model2$fitted.values>0.5)
+T = table(estimated_isAlert,newdata_train$IsAlert)
+misscls.train<-sum((estimated_isAlert - newdata_train$IsAlert)^2)/length(newdata_train$IsAlert)
+misscls.train
+presdicted.testing<-as.numeric(predict(model2,newdata_test )>0.5)
+Ttest = table(presdicted.testing, newdata_test$IsAlert)
+misscls.test<-sum((presdicted.testing - newdata_test$IsAlert)^2)/length(newdata_test$IsAlert)
+misscls.test
+```
+
+
+
+```{r}
+set.seed(9)
+net.dat <- nnet(IsAlert~., data = newdata_train, size = 15, decay = 0, maxit = 100)
+table(round(net.dat$fitted.values, 1))
+estimated_isAlert=as.numeric(net.dat$fitted.values>0.5)
+T = table(estimated_isAlert,newdata_train$IsAlert)
+misscls.train<-sum((estimated_isAlert - newdata_train$IsAlert)^2)/length(newdata_train$IsAlert)
+misscls.train
+presdicted.testing<-as.numeric(predict(net.dat,newdata_test )>0.5)
+Ttest = table(presdicted.testing, newdata_test$IsAlert)
+misscls.test<-sum((presdicted.testing - newdata_test$IsAlert)^2)/length(newdata_test$IsAlert)
+misscls.test
+```
+
+three model: 
+model_1 : nodes = 3, decay = 0, maxit = 100
+model_2 : nodes = 10, decay = 0, maxit = 100
+model_3 : nodes = 15, decay = 0, maxit = 100
+
+
+then we decide the best neural network model with 15 nodes and maxit is equal to 1000
+
+
+*decision tree
+```{r}
+#new data set
+newdata$IsAlert <- as.factor(id) 
+mydata <- newdata[1:10000,]
+mydata <- mydata [ , -c(1, 2)]
+#training data
+mydata_train <- mydata[1:7000, ]
+#testing data
+mydata_test <- mydata[7001:10000,]
+
+```
+```{r}
+
+#training data
+mydata_train <- mydata[1:7000, ]
+#testing data
+mydata_test <- mydata[7001:10000,]
+
+library(tree)
+tree.plot =tree(IsAlert~.,data=mydata_train )
+summary (tree.plot )
+plot(tree.plot)
+text(tree.plot,pretty =0)
+```
+```{r}
+tree.model =tree(IsAlert~.,data=mydata_train)
+summary (tree.model)
+
+IsAlert.train=mydata_train$IsAlert
+tree.pred=predict(tree.model, mydata_train,type="class")
+table(tree.pred , IsAlert.train)
+
+
+IsAlert.test=mydata_test$IsAlert
+tree.pred=predict(tree.model, mydata_test,type="class")
+table(tree.pred , IsAlert.test)
+
+set.seed (10)
+cv.one =cv.tree(tree.model ,FUN=prune.misclass )
+names(cv.one)
+cv.one
+plot(cv.one$size ,cv.one$dev ,type="b")
+```
+
+misclassification rate for training data = ( 522 + 0) / (387 + 522 + 6091)
+misclassification rate for testing data = ( 96 + 0) / (6 + 96 + 2898)
+
+the tree already has 5 nodes, which means we have already reach the best model
+
+
+*logistic model
+```{r}
+train_transformed$P1 <- newdata$P1
+train_transformed$P2 <- newdata$P2
+train_transformed$P4 <- newdata$P4
+train_transformed$P6 <- newdata$P6
+train_transformed$P7 <- newdata$P7
+
+train_transformed$E1 <- newdata$E1
+train_transformed$E2 <- newdata$E2
+train_transformed$E4 <- newdata$E4
+train_transformed$E6 <- newdata$E6
+train_transformed$E10 <- newdata$E10
+train_transformed$E11 <- newdata$E11
+
+train_transformed$V1 <- newdata$V1
+train_transformed$V3 <- newdata$V3
+train_transformed$V4 <- newdata$V4
+train_transformed$V6 <- newdata$V6
+train_transformed$V11 <- newdata$V11
+
+
+trainSet <- train_transformed[1:7000, ]
+testSet <- train_transformed[7001: 10000, ]
+
+```
+
+
+```{r}
+
+logistic.model <- glm(IsAlert~., data = trainSet, family = binomial(link="logit"))
+summary(logistic.model)
+```
+```{r}
+#variables slection 
+logistic.model.better <- glm(IsAlert~ P1 + P4 + E1 + E2 + E4 + E6 + E8.2 + E11 + V3 + V5.1 + V6 , data = trainSet, family = binomial(link="logit"))
+summary(logistic.model.better)
+```
+```{r}
+logistic.model.better <- glm(IsAlert~  P4 + E1 + E2 + E4 + E6 + E8.2 + E11 + V3 + V6 , data = trainSet, family = binomial(link="logit"))
+summary(logistic.model.better)
+```
+all variables are significant
+
+```{r}
+library(MASS)
+set.seed(10)
+birthwt.step <- stepAIC(logistic.model.better, trace = 1, direction="both")
+birthwt.step$anova
+```
+
+```{r}
+logistic.model.best <- glm(IsAlert ~ P4 + E1 + E2 + E4 + E6 + E8.2 + E11 + V3 + V6, data = trainSet, family = binomial(link="logit"))
+summary(logistic.model.best)
+```
+```{r}
+# misclassification rate
+train_transformed$IsAlert <- as.numeric(train_transformed$IsAlert)
+estimated_isAlert<- predict(logistic.model.best, trainSet, type = "response")
+misscls.train<-sum((estimated_isAlert-trainSet$IsAlert)^2)/ length(trainSet$IsAlert)
+misscls.train
+
+
+presdicted.testing <- predict(logistic.model.best, testSet, type = "response")
+misscls.test<-sum((presdicted.testing - testSet$IsAlert)^2)/length(testSet$IsAlert)
+misscls.test
+
+```
+misc rate for training : 0.09732695
+for testing:  0.03489911
+
+
+*ensemable
+```{r}
+#Loading the required libraries
+library('caret')
+#Seeting the random seed
+set.seed(11)
+
+
+
+#Does the data contain missing values
+sum(is.na(data))
+#no missing value in our dataset
+
+#Imputing missing values using median
+#preProcValues <- preProcess(data, method = c("medianImpute","center","scale"))
+#library('RANN')
+#data_processed <- predict(preProcValues, data)
+#sum(is.na(data_processed))
+
+
+#Spliting training set into two parts based on outcome: 75% and 25%
+mynewdata <- data[1:1000, ]
+mynewdata$IsAlert <- as.factor(ifelse(mynewdata$IsAlert == 1, "Yes", "No"))
+index <- createDataPartition(mynewdata$IsAlert, p=0.75, list=FALSE)
+trainSet <- mynewdata[ index,]
+testSet <- mynewdata[-index,]
+
+
+#Defining the training controls for multiple models
+fitControl <- trainControl(
+  method = "cv",
+  number = 5,
+savePredictions = 'final',
+classProbs = T)
+
+#Defining the predictors and outcome
+
+predictors<-c("P4","E1", "E2","E4", "E6", "E8", "E11", "V3", "V6") #using features which have significant effect on response variable
+outcomeName<-'IsAlert'
+summary(testSet)
+```
+```{r}
+
+#Training the random forest model
+model_rf<-train(trainSet[,predictors],trainSet[,outcomeName],method='rf',trControl=fitControl,tuneLength=3)
+
+
+#Predicting using random forest model
+testSet$pred_rf<-predict(object = model_rf,testSet[,predictors])
+
+#Checking the accuracy of the random forest model
+confusionMatrix(testSet$IsAlert,testSet$pred_rf)
+```
+
+```{r}
+
+#Training the Logistic regression model
+model_lr<-train(trainSet[,predictors],trainSet[,outcomeName],method='glm',trControl=fitControl,tuneLength=3)
+
+#Predicting using knn model
+testSet$pred_lr<-predict(object = model_lr,testSet[,predictors])
+
+#Checking the accuracy of the random forest model
+confusionMatrix(testSet$IsAlert,testSet$pred_lr)
+```
+
+```{r}
+#Defining the training control
+fitControl <- trainControl(
+method = "cv",
+number = 10,
+savePredictions = 'final', # To save out of fold predictions for best parameter combinantions
+classProbs = T # To save the class probabilities of the out of fold predictions
+)
+
+#Defining the predictors and outcome
+predictors<-c("P4","E1", "E2","E4", "E6", "E8", "E11", "V3", "V6")
+outcomeName<-'IsAlert'
+
+#Training the random forest model
+model_rf<-train(trainSet[,predictors],trainSet[,outcomeName],method='rf',trControl=fitControl,tuneLength=3)
+55/70
+#Training the logistic regression model
+model_lr<-train(trainSet[,predictors],trainSet[,outcomeName],
+method='glm',trControl=fitControl,tuneLength=3)
+
+#Predicting the out of fold prediction probabilities for training data
+trainSet$OOF_pred_rf<-model_rf$pred$Y[order(model_rf$pred$rowIndex)]
+trainSet$OOF_pred_lr<-model_lr$pred$Y[order(model_lr$pred$rowIndex)]
+
+#Predicting probabilities for the test data
+testSet$OOF_pred_rf<-predict(model_rf,testSet[predictors],type='prob')$Y
+testSet$OOF_pred_lr<-predict(model_lr,testSet[predictors],type='prob')$Y
+
+
+#Predictors for top layer models 
+predictors_top<-c('OOF_pred_rf','OOF_pred_lr') 
+
+#GBM as top layer model 
+model_gbm<- train(trainSet[,predictors_top],trainSet[,outcomeName],method='gbm',trControl=fitControl,tuneLength=3)
+
+#predict using GBM top layer model
+testSet$gbm_stacked<-predict(model_gbm,testSet[,predictors_top])
+
+#Logistic regression as top layer model
+model_glm<-train(trainSet[,predictors_top],trainSet[,outcomeName],method='glm',trControl=fitControl,tuneLength=3)
+
+
+#predict using logictic regression top layer model
+testSet$glm_stacked<-predict(model_glm,testSet[,predictors_top])
+
+```
+
+```{r}
+confusionMatrix(testSet$IsAlert,testSet$gbm_stacked)
+confusionMatrix(testSet$IsAlert,testSet$glm_stacked)
+
+
+
+```
+
+
+
+
+
+
+
